@@ -10,14 +10,14 @@ import java.util.List;
 
 @Entity
 @Table(name = "curso")
-@JsonIdentityInfo(scope = Curso.class, generator= ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
+//@JsonIdentityInfo(scope = Curso.class, generator= ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 
 public class Curso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "curso_id")
-    @JsonIgnore
+    //@JsonIgnore
     private Long id;
 
     @Column(name = "nombre")
@@ -31,7 +31,7 @@ public class Curso {
 
 
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "profesor_id")
     private Profesor profesor;
 
@@ -39,6 +39,7 @@ public class Curso {
     private List<RegistroCurso> registroCursos = new ArrayList<>();
 
 
+    private  int cantidadEstudiantes;
     public Curso() {
     }
 
@@ -51,6 +52,7 @@ public class Curso {
         this.materia = materia;
         this.profesor = profesor;
         this.registroCursos = registroCursos;
+        this.cantidadEstudiantes=5;
     }
 
 
@@ -84,5 +86,13 @@ public class Curso {
 
     public void setRegistroCursos(List<RegistroCurso> registroCursos) {
         this.registroCursos = registroCursos;
+    }
+
+    public int getCantidadEstudiantes() {
+        return cantidadEstudiantes;
+    }
+
+    public void setCantidadEstudiantes(int cantidadEstudiantes) {
+        this.cantidadEstudiantes = cantidadEstudiantes;
     }
 }

@@ -19,10 +19,12 @@ public class CursoService {
     }
 
     public void crearCurso(Curso curso){
+
         this.cursoRepository.save(curso);
 
     }
     public List<Curso> verCursos(){
         return  this.cursoRepository.findAll();
     }
+
 }

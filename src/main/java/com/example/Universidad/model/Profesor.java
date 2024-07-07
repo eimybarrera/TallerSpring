@@ -11,12 +11,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "profesor")
-@JsonIdentityInfo(scope = Profesor.class, generator= ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
+//@JsonIdentityInfo(scope = Profesor.class, generator= ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 public class Profesor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "profesor_id")
-    @JsonIgnore
+    //@JsonIgnore
     private Long id;
 
     @Column(name = "nombre")

@@ -18,11 +18,11 @@ public class RegistroCurso {
     @Column(name = "fecha_desmatricula")
     private LocalDate fechaDesmatricula;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne()
     @JoinColumn(name = "estudiante_id")
     private Estudiante estudiante;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne()
     @JoinColumn(name = "curso_id")
     private  Curso curso;
 

@@ -57,5 +57,7 @@ public class Estudiante {
         return fechaNacimiento;
     }
 
-
+    public List<RegistroCurso> getRegistroCursos() {
+        return registroCursos;
+    }
 }

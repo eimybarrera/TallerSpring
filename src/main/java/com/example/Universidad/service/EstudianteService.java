@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +21,15 @@ public class EstudianteService {
     }
 
     public void ingresarEstudiante(Estudiante estudiante){
-        this.estudianteRepository.save(estudiante);
+        //Optional<Estudiante> etudianteIngresar= this.estudianteRepository.findById(estudiante.getId());
+
+       // if(2024-(etudianteIngresar.get().getFechaNacimiento().getYear())>18){
+            this.estudianteRepository.save(estudiante);
+        //}
+       // else {
+            System.out.println("es menor de edad, pailas");
+       // }
+
     }
 
     public List<Estudiante> verEstudiantes(){
