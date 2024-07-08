@@ -21,8 +21,13 @@ public class EstudianteController {
 
     @PostMapping()
     public ResponseEntity<String> ingresarEstudiante(@RequestBody Estudiante estudiante){
-        this.estudianteService.ingresarEstudiante(estudiante);
-        return  ResponseEntity.ok("Se creó el estudiante");
+        try {
+            this.estudianteService.ingresarEstudiante(estudiante);
+            return  ResponseEntity.ok("Se creó el estudiante");
+        }catch (Exception e){
+            return  ResponseEntity.ok("No se creó el estudiante because es menor de edad ");
+        }
+
     }
     @GetMapping()
     public List<Estudiante> verEstudiantes(){

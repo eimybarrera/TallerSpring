@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,14 +22,16 @@ public class EstudianteService {
     }
 
     public void ingresarEstudiante(Estudiante estudiante){
-        //Optional<Estudiante> etudianteIngresar= this.estudianteRepository.findById(estudiante.getId());
+        LocalDate fechaNacimiento = estudiante.getFechaNacimiento();
+        LocalDate fechaActual = LocalDate.now();
+        int edad = Period.between(fechaNacimiento, fechaActual).getYears();
 
-       // if(2024-(etudianteIngresar.get().getFechaNacimiento().getYear())>18){
+        if (edad >= 18) {
             this.estudianteRepository.save(estudiante);
-        //}
-       // else {
-            System.out.println("es menor de edad, pailas");
-       // }
+        }
+        else {
+            throw new IllegalArgumentException("El estudiante es menor de edad.");
+      }
 
     }
 
